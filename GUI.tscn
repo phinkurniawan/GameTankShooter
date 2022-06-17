@@ -1,30 +1,47 @@
-[gd_scene format=2]
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Sprites/lineLight/lineLight24.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/lineLight/lineLight25.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/lineLight/lineLight23.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/lineLight/lineLight22.png" type="Texture" id=4]
+[ext_resource path="res://new_theme.tres" type="Theme" id=5]
 
 [node name="GUI" type="CanvasLayer"]
 
 [node name="Control" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="kiri" type="TouchScreenButton" parent="Control"]
+position = Vector2( 4, 517 )
+normal = ExtResource( 4 )
+pressed = ExtResource( 4 )
+action = "move_left"
 
 [node name="kanan" type="TouchScreenButton" parent="Control"]
+position = Vector2( 174, 516 )
+normal = ExtResource( 3 )
+pressed = ExtResource( 3 )
+action = "move_right"
 
 [node name="mundur" type="TouchScreenButton" parent="Control"]
-position = Vector2( 14, 37 )
+position = Vector2( 88, 517 )
+normal = ExtResource( 2 )
+pressed = ExtResource( 2 )
+action = "move_down"
 
 [node name="maju" type="TouchScreenButton" parent="Control"]
-position = Vector2( 14, 38 )
+position = Vector2( 90, 431 )
+normal = ExtResource( 1 )
+pressed = ExtResource( 1 )
+action = "move_up"
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 margin_left = 23.0
 margin_top = 12.0
 margin_right = 139.0
 margin_bottom = 29.0
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
+theme = ExtResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+value = 50.0

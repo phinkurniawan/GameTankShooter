@@ -575,9 +575,12 @@ script/source = "extends KinematicBody2D
 export var speed = 100
 export var bullet_speed = 1000
 export var fire_rate = 0.2
-var health_bar= 200
+var health_bar= 100
 var bullet = preload(\"res://Player/Bullet.tscn\")
 var can_fire = true
+var health_maks = 100
+var health_hero = 100
+signal hero_update_health(value)
 
 func _process(delta):
 	look_at(get_global_mouse_position())
@@ -609,8 +612,9 @@ func kill():
 	get_tree().reload_current_scene()
 	
 func _on_Area2D_body_entered(body):
+	emit_signal(\"hero_update_health\", (float(health_bar)/float(health_maks)) * 100)
 	if \"Enemy\" in body.name:
-		health_bar -= 30
+		health_bar -= 15
 	if health_bar <= 0:
 		kill()
 	pass
@@ -671,4 +675,5 @@ position = Vector2( 904, 636 )
 [node name="SpawnLocation" parent="." instance=ExtResource( 7 )]
 position = Vector2( 531, -2 )
 
+[connection signal="hero_update_health" from="Player" to="." method="_on_Player_hero_update_health"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
