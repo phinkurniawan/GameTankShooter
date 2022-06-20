@@ -7,7 +7,7 @@ extends KinematicBody2D
 
 var velocity = Vector2()
 var speed = 120
-var health:int = 100
+var health:int = 50
 # Called when the node enters the scene tree for the first time.
 onready var enemy = $AnimatedSprite
 onready var player = get_parent().get_node("Player")

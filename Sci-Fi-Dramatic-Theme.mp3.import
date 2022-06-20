@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Sci-Fi-Dramatic-Theme.mp3-28fa278c0a2ef070447f157ed985a588.mp3str"
+
+[deps]
+
+source_file="res://Sci-Fi-Dramatic-Theme.mp3"
+dest_files=[ "res://.import/Sci-Fi-Dramatic-Theme.mp3-28fa278c0a2ef070447f157ed985a588.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

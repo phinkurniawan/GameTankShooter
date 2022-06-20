@@ -15,8 +15,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Top Down Shooter Tutorial"
-run/main_scene="res://Scenes/Main.tscn"
+run/main_scene="res://MainMenu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+AudioManager="*res://AudioManager.tscn"
 
 [display]
 
