@@ -19,7 +19,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _physics_process(delta):
-	if global_position.distance_to(player.global_position)<300 or (player != null and stun == false):
+	if player != null and stun == false:
 		var direction = get_direction(enemy,player)
 		var move_direction = direction.normalized()
 		velocity = move_direction*speed
