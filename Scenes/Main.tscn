@@ -618,7 +618,7 @@ func kill():
 	emit_signal(\"hero_update_health\", 100)
 	
 func _on_Area2D_body_entered(body):
-	if \"Enemy\" in body.name:
+	if (\"Enemy\" in body.name) or (\"miniBullet\" in body.name):
 		health_bar -= 15
 	if 'bulletBoss' in body.name:
 		health_bar -= 30
