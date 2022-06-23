@@ -578,7 +578,7 @@ export var bullet_speed = 1000
 export var fire_rate = 0.2
 var health_bar= 100
 var bullet = preload(\"res://Player/Bullet.tscn\")
-var sound = preload(\"res://laserShot.mp3\")
+#var sound = preload(\"res://laserShot.mp3\")
 var shoot_sound = load(\"res://laserShot.mp3\")
 var main_menu = load(\"res://MainMenu.tscn\")
 var can_fire = true
@@ -597,7 +597,7 @@ func _process(delta):
 		can_fire = false
 		yield(get_tree().create_timer(fire_rate), \"timeout\")
 		can_fire = true
-		#AudioManager.play_effect(shoot_sound)
+		AudioManager.play_effect(shoot_sound)
 	
 func _physics_process(delta):
 	
