@@ -614,8 +614,7 @@ func _physics_process(delta):
 	move_and_slide(direction * speed)
 
 func kill():
-	get_tree().reload_current_scene()
-	emit_signal(\"hero_update_health\", 100)
+	get_tree().change_scene(\"res://GameOver.tscn\")
 	
 func _on_Area2D_body_entered(body):
 	if (\"Enemy\" in body.name) or (\"miniBullet\" in body.name):
