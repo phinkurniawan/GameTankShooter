@@ -8,6 +8,7 @@ extends KinematicBody2D
 var velocity = Vector2()
 var speed = 120
 var health:int = 50
+var shoot_sound = load("res://dead.mp3")
 # Called when the node enters the scene tree for the first time.
 var bullet = preload("res://Player/miniBullet.tscn")
 onready var player = get_parent().get_node("Player")
@@ -67,4 +68,5 @@ func _on_Hitbox_body_entered(body):
 		$Stun_timer.start()
 	if health <= 0:
 		queue_free()
+		AudioManager.play_effect(shoot_sound)
 	pass # Replace with function body.
