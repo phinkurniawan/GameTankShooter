@@ -41,7 +41,7 @@ func fire():
 		bullet_instance.apply_impulse(Vector2(), Vector2(bullet_speed, 0).rotated(rotation))
 		get_tree().get_root().add_child(bullet_instance)
 		can_fire = false
-		yield(get_tree().create_timer(0.4), "timeout")
+		$Timer.start(0.4); yield($Timer, "timeout")
 		can_fire = true
  # Replace with function body.
 

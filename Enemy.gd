@@ -7,7 +7,7 @@ extends KinematicBody2D
 
 var velocity = Vector2()
 var speed = 120
-var health:int = 50
+var health:int = 100
 var shoot_sound = load("res://dead.mp3")
 # Called when the node enters the scene tree for the first time.
 var bullet = preload("res://Player/miniBullet.tscn")
@@ -39,7 +39,7 @@ func fire():
 		bullet_instance.apply_impulse(Vector2(), Vector2(bullet_speed, 0).rotated(rotation))
 		get_tree().get_root().add_child(bullet_instance)
 		can_fire = false
-		yield(get_tree().create_timer(0.7), "timeout")
+		$Timer.start(0.7); yield($Timer, "timeout")
 		can_fire = true
 	
 

@@ -31,6 +31,9 @@ shape = SubResource( 1 )
 [node name="bulletPoint" type="Node2D" parent="."]
 position = Vector2( 45.73, 0 )
 
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
 [node name="detectPlayer" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detectPlayer"]
