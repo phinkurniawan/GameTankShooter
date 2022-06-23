@@ -576,14 +576,14 @@ script/source = "extends KinematicBody2D
 export var speed = 100
 export var bullet_speed = 1000
 export var fire_rate = 0.2
-var health_bar= 100
+var health_bar= 200
 var bullet = preload(\"res://Player/Bullet.tscn\")
 #var sound = preload(\"res://laserShot.mp3\")
 var shoot_sound = load(\"res://laserShot.mp3\")
 var main_menu = load(\"res://MainMenu.tscn\")
 var can_fire = true
-var health_maks = 100
-var health_hero = 100
+var health_maks = 200
+var health_hero = 200
 signal hero_update_health(value)
 func _process(delta):
 	look_at(get_global_mouse_position())
@@ -614,7 +614,7 @@ func _physics_process(delta):
 	move_and_slide(direction * speed)
 
 func kill():
-	get_tree().change_scene(\"res://GameOver.tscn\")
+	get_tree().reload_current_scene()
 	
 func _on_Area2D_body_entered(body):
 	if (\"Enemy\" in body.name) or (\"miniBullet\" in body.name):
@@ -623,8 +623,9 @@ func _on_Area2D_body_entered(body):
 		health_bar -= 30
 	emit_signal(\"hero_update_health\", (float(health_bar)/float(health_maks)) * 100)
 	if health_bar <= 0:
-		kill()
 		health_bar = health_maks
+		emit_signal(\"hero_update_health\", 100)
+	
 	pass
 "
 
@@ -666,6 +667,7 @@ position = Vector2( -9, 361 )
 position = Vector2( -1, -1 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 1.5
 autostart = true
 
 [node name="Position2D" type="Position2D" parent="." groups=["spawn"]]

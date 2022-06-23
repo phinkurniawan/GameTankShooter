@@ -20,7 +20,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _physics_process(delta):
-	if global_position.distance_to(player.global_position)<300 or detected:
+	if global_position.distance_to(player.global_position)<500or detected:
 		look_at(player.global_position)
 		velocity = get_direction(boss,player)*speed
 		velocity = velocity.normalized()
@@ -41,7 +41,7 @@ func fire():
 		bullet_instance.apply_impulse(Vector2(), Vector2(bullet_speed, 0).rotated(rotation))
 		get_tree().get_root().add_child(bullet_instance)
 		can_fire = false
-		yield(get_tree().create_timer(0.3), "timeout")
+		yield(get_tree().create_timer(0.4), "timeout")
 		can_fire = true
  # Replace with function body.
 

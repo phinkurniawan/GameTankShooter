@@ -13,7 +13,7 @@ script = ExtResource( 3 )
 
 [node name="Shooting" type="AudioStreamPlayer" parent="GameEffects"]
 stream = ExtResource( 1 )
-volume_db = -10.0
+volume_db = -16.992
 
 [node name="DeadEffect" type="AudioStreamPlayer" parent="GameEffects"]
 stream = ExtResource( 2 )

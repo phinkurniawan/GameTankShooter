@@ -6,6 +6,7 @@ onready var health_progress = $Player/GUI/HealthBar
 
 var enemy = preload("res://Enemy.tscn")
 var boss = preload("res://Boss.tscn")
+var Player = preload("res://Player/Player.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -32,7 +33,7 @@ func _on_Player_hero_update_health(value):
 	health_progress.value = value
 	pass # Replace with function body.
 
-
+		
 func _on_BossSpawn_timeout():
 	var bossInstance = boss.instance()
 	add_child(bossInstance)
