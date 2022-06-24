@@ -20,11 +20,12 @@ func _ready():
 	pass # Replace with function body.
 
 func _physics_process(delta):
-	if global_position.distance_to(player.global_position)<500or detected:
-		look_at(player.global_position)
-		velocity = get_direction(boss,player)*speed
-		velocity = velocity.normalized()
-		fire()
+	if player != null:
+		if global_position.distance_to(player.global_position)<500 or detected:
+			look_at(player.global_position)
+			velocity = get_direction(boss,player)*speed
+			velocity = velocity.normalized()
+			fire()
 	else  :
 		velocity = Vector2.ZERO
 	move_and_slide(velocity*speed)

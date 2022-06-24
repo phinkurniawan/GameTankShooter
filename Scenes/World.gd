@@ -6,9 +6,10 @@ onready var health_progress = $Player/GUI/HealthBar
 
 var enemy = preload("res://Enemy.tscn")
 var boss = preload("res://Boss.tscn")
-var Player = preload("res://Player/Player.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+		
 	pass # Replace with function body.
 
 

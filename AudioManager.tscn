@@ -17,3 +17,4 @@ volume_db = -16.992
 
 [node name="DeadEffect" type="AudioStreamPlayer" parent="GameEffects"]
 stream = ExtResource( 2 )
+volume_db = -10.487

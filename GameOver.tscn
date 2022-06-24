@@ -69,11 +69,11 @@ margin_bottom = 122.0
 margin_right = 255.0
 margin_bottom = 59.0
 
-[node name="PlayAgain" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer"]
 margin_right = 255.0
 margin_bottom = 59.0
 
-[node name="Selector" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/PlayAgain"]
+[node name="Selector" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
 margin_right = 28.0
 margin_bottom = 59.0
 rect_min_size = Vector2( 7, 0 )
@@ -81,7 +81,7 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = ">"
 
-[node name="OptionName" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/PlayAgain"]
+[node name="OptionName" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
 margin_left = 32.0
 margin_right = 255.0
 margin_bottom = 59.0
@@ -95,12 +95,12 @@ margin_top = 63.0
 margin_right = 255.0
 margin_bottom = 122.0
 
-[node name="Exit" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3"]
 margin_left = 71.0
 margin_right = 183.0
 margin_bottom = 59.0
 
-[node name="Selector" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/Exit"]
+[node name="Selector" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer"]
 margin_right = 28.0
 margin_bottom = 59.0
 rect_min_size = Vector2( 7, 0 )
@@ -108,7 +108,7 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = ">"
 
-[node name="OptionName" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/Exit"]
+[node name="OptionName" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer"]
 margin_left = 32.0
 margin_right = 112.0
 margin_bottom = 59.0
@@ -120,6 +120,3 @@ text = "Exit"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CenterContainer"]
 stream = ExtResource( 3 )
 autoplay = true
-
-[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/PlayAgain" to="." method="_on_PlayAgain_mouse_entered"]
-[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/Exit" to="." method="_on_Exit_mouse_entered"]
