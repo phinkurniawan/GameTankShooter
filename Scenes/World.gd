@@ -6,10 +6,9 @@ onready var health_progress = $Player/GUI/HealthBar
 
 var enemy = preload("res://Enemy.tscn")
 var boss = preload("res://Boss.tscn")
-
+var player = preload("res://Player/Player.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-		
 	pass # Replace with function body.
 
 
@@ -17,7 +16,7 @@ func _ready():
 #func _process(delta):
 #	pass
 
-
+	
 func _on_SpawnTimer_timeout():
 	var enemy_instance = enemy.instance()
 	add_child(enemy_instance)
@@ -44,3 +43,8 @@ func _on_BossSpawn_timeout():
 	var position = node.position
 	$SpawnLocation.position = position
 	pass # Replace with function body.
+
+
+
+	pass # Replace with function body.
+ # Replace with function body.

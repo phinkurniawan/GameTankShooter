@@ -70,3 +70,6 @@ func _on_Hitbox_body_entered(body):
 		queue_free()
 		AudioManager.play_effect(shoot_sound)
 	pass # Replace with function body.
+# Replace with function body.
+
+# Replace with function body.

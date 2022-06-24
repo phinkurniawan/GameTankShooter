@@ -78,3 +78,4 @@ func _on_hitbox_body_entered(body):
 		if health_bar <=0:
 			queue_free()
 	pass # Replace with function body.
+# Replace with function body.
