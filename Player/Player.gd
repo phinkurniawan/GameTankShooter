@@ -41,8 +41,10 @@ func _physics_process(delta):
 	move_and_slide(direction * speed)
 
 func kill():
+	get_tree().paused = true
+	get_tree().change_scene("res://GameOver.tscn")
 	emit_signal("hero_update_health",200)
-	
+	health_bar = health_maks
 	
 func _on_Area2D_body_entered(body):
 	if ("Enemy" in body.name) or ("miniBullet" in body.name):
@@ -51,7 +53,6 @@ func _on_Area2D_body_entered(body):
 		health_bar -= 30
 	emit_signal("hero_update_health", (float(health_bar)/float(health_maks)) * 100)
 	if health_bar <= 0:
-		health_bar = health_maks
 		kill()
 		
 		

@@ -16,7 +16,6 @@ func _ready():
 #func _process(delta):
 #	pass
 
-	
 func _on_SpawnTimer_timeout():
 	var enemy_instance = enemy.instance()
 	add_child(enemy_instance)

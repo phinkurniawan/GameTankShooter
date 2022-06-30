@@ -1,10 +1,9 @@
 extends Control
 const first_scene = preload("res://Scenes/Main.tscn")
 
-onready var selector_one = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/Start/Selector
-onready var selector_two = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/Options/Selector
-onready var selector_three = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/Exit/Selector
-
+onready var selector_one = $CanvasLayer/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/Start/Selector
+onready var selector_two = $CanvasLayer/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/Options/Selector
+onready var selector_three = $CanvasLayer/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/Exit/Selector
 var current_selection = 0
 
 func _ready():
@@ -15,6 +14,7 @@ func _process(delta):
 		current_selection += 1
 		set_current_selection(current_selection)
 	elif Input.is_action_just_pressed("ui_up") and current_selection > 0:
+		
 		current_selection -= 1
 		set_current_selection(current_selection)
 	elif Input.is_action_just_pressed("ui_accept"):
