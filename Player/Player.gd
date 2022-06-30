@@ -1,5 +1,13 @@
 extends KinematicBody2D
 
+
+export (NodePath) var joystickLeftPath
+onready var joystickLeft : VirtualJoystick = get_node(joystickLeftPath)
+
+
+export (NodePath) var joystickRightPath
+onready var joystickRight : VirtualJoystick = get_node(joystickRightPath)
+
 export var speed = 100
 export var bullet_speed = 1000
 export var fire_rate = 0.2
@@ -12,7 +20,16 @@ var can_fire = true
 var health_maks = 200
 var health_hero = 200
 signal hero_update_health(value)
-func _process(delta):
+	
+func _process(delta) -> void:
+	var move := Vector2.ZERO
+	move.x = Input.get_axis("move_left", "move_right")
+	move.y = Input.get_axis("move_up", "move_down")
+	position += move * speed * delta
+	
+	# Rotation:
+	if joystickRight and joystickRight.is_pressed():
+		rotation = joystickRight.get_output().angle()
 	look_at(get_global_mouse_position())#diganti dengan player.global_position dan Vector2
 	
 	if Input.is_action_pressed("fire") and can_fire:
