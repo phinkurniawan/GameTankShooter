@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Sprites/box.png" type="Texture" id=1]
+
+[node name="SpawnLocation" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 122, 26 )
+scale = Vector2( 0.764493, 0.817797 )
+texture = ExtResource( 1 )

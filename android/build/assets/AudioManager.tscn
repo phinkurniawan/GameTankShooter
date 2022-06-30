@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://laserShot.mp3" type="AudioStream" id=1]
+[ext_resource path="res://deadPlayer.mp3" type="AudioStream" id=2]
+[ext_resource path="res://AudioManager.gd" type="Script" id=3]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource( 3 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+
+[node name="GameEffects" type="Node" parent="."]
+
+[node name="Shooting" type="AudioStreamPlayer" parent="GameEffects"]
+stream = ExtResource( 1 )
+volume_db = -16.992
+
+[node name="DeadEffect" type="AudioStreamPlayer" parent="GameEffects"]
+stream = ExtResource( 2 )
+volume_db = -10.487

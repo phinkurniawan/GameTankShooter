@@ -1,10 +1,9 @@
-extends MarginContainer
-
+extends Control
 const first_scene = preload("res://Scenes/Main.tscn")
 
-onready var selector_one = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer/Selector
-onready var selector_two = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer/Selector
-onready var selector_three = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer/Selector
+onready var selector_one = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/Start/Selector
+onready var selector_two = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/Options/Selector
+onready var selector_three = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/Exit/Selector
 
 var current_selection = 0
 
@@ -29,6 +28,7 @@ func handle_selection(_current_selection):
 		print("Add options!")
 	elif _current_selection == 2:
 		get_tree().quit()
+		
 
 func set_current_selection(_current_selection):
 	selector_one.text = ""
@@ -40,3 +40,4 @@ func set_current_selection(_current_selection):
 		selector_two.text = ">"
 	elif _current_selection == 2:
 		selector_three.text = ">"
+# Replace with function body.
