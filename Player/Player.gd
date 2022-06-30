@@ -6,7 +6,7 @@ export var fire_rate = 0.2
 var health_bar= 200
 var bullet = preload("res://Player/Bullet.tscn")
 #var sound = preload("res://laserShot.mp3")
-var shoot_sound = load("res://laserShot.mp3")
+onready var shoot_sound = load("res://laserShot.mp3")
 var main_menu = load("res://MainMenu.tscn")
 var can_fire = true
 var health_maks = 200
@@ -52,7 +52,6 @@ func _on_Area2D_body_entered(body):
 		health_bar -= 30
 	emit_signal("hero_update_health", (float(health_bar)/float(health_maks)) * 100)
 	if health_bar <= 0:
-		$GUI.queue_free()
 		kill()
 		
 		

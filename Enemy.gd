@@ -8,7 +8,7 @@ extends KinematicBody2D
 var velocity = Vector2()
 var speed = 120
 var health:int = 100
-var shoot_sound = load("res://dead.mp3")
+var dead_sound = load("res://dead.mp3")
 # Called when the node enters the scene tree for the first time.
 var bullet = preload("res://Player/miniBullet.tscn")
 onready var player = get_parent().get_node("Player")
@@ -61,14 +61,14 @@ func _on_Stun_timer_timeout():
 
 
 func _on_Hitbox_body_entered(body):
-	if !('miniBullet') in body.name:
+	if !('Boss') in body.name and !("miniBullet") in body.name :
 		health -= 40
 		velocity = -velocity*4
 		stun = true
 		$Stun_timer.start()
 	if health <= 0:
 		queue_free()
-		AudioManager.play_effect(shoot_sound)
+		AudioManager.play_effect(dead_sound)
 	pass # Replace with function body.
 # Replace with function body.
 

@@ -12,6 +12,7 @@ var velocity = Vector2()
 
 var bullet = preload("res://Player/bulletBoss.tscn")
 onready var player = get_parent().get_node("Player")
+onready var shoot_sound = load("res://laserShot.mp3")
 onready var boss = $Sprite
 var detected = false
 var can_fire = true
@@ -44,6 +45,7 @@ func fire():
 		can_fire = false
 		$Timer.start(0.4); yield($Timer, "timeout")
 		can_fire = true
+		AudioManager.play_effect(shoot_sound)
  # Replace with function body.
 
 
