@@ -22,8 +22,7 @@ func _process(delta):
 
 func handle_selection(_current_selection):
 	if _current_selection == 0:
-		get_parent().add_child(first_scene.instance())
-		queue_free()
+		get_tree().change_scene("res://Scenes/Main.tscn")
 	elif _current_selection == 1:
 		print("Add options!")
 	elif _current_selection == 2:

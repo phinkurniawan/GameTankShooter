@@ -41,7 +41,6 @@ func _physics_process(delta):
 	move_and_slide(direction * speed)
 
 func kill():
-	get_tree().paused = true
 	get_tree().change_scene("res://GameOver.tscn")
 	emit_signal("hero_update_health",200)
 	health_bar = health_maks

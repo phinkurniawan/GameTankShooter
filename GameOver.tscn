@@ -6,16 +6,39 @@
 [sub_resource type="GDScript" id=5]
 script/source = "extends MarginContainer
 
-const first_scene = preload(\"res://Scenes/Main.tscn\")
 
-func _on_Exit_pressed():
-	get_tree().quit()
-	pass # Replace with function body.
+onready var selector_one = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/PlayAgain/Selector
+onready var selector_two = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/Exit/Selector
 
+var current_selection = 0
 
-func _on_PlayAgain_pressed():
-	get_tree().change_scene(\"res://Scenes/Main.tscn\")
-	pass # Replace with function body.
+func _ready():
+	set_current_selection(0)
+
+func _process(delta):
+	if Input.is_action_just_pressed(\"ui_down\") and current_selection < 1:
+		current_selection += 1
+		set_current_selection(current_selection)
+	elif Input.is_action_just_pressed(\"ui_up\") and current_selection > 0:
+		current_selection -= 1
+		set_current_selection(current_selection)
+	elif Input.is_action_just_pressed(\"ui_accept\"):
+		handle_selection(current_selection)
+
+func handle_selection(_current_selection):
+	if _current_selection == 0:
+		get_tree().change_scene(\"res://Scenes/Main.tscn\")
+	elif _current_selection == 1:
+		get_tree().quit()
+		
+
+func set_current_selection(_current_selection):
+	selector_one.text = \"\"
+	selector_two.text = \"\"
+	if _current_selection == 0:
+		selector_one.text = \">\"
+	elif _current_selection == 1:
+		selector_two.text = \">\"
 "
 
 [sub_resource type="DynamicFontData" id=3]
@@ -91,6 +114,7 @@ margin_bottom = 4.0
 [node name="PlayAgain" type="TouchScreenButton" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer"]
 position = Vector2( -87, 14 )
 shape = SubResource( 6 )
+action = "ui_accept"
 
 [node name="Selector" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/PlayAgain"]
 margin_left = -28.0
@@ -155,6 +179,3 @@ __meta__ = {
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CenterContainer"]
 stream = ExtResource( 3 )
 autoplay = true
-
-[connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/PlayAgain" to="." method="_on_PlayAgain_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/Exit" to="." method="_on_Exit_pressed"]

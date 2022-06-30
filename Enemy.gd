@@ -61,7 +61,7 @@ func _on_Stun_timer_timeout():
 
 
 func _on_Hitbox_body_entered(body):
-	if !('miniBullet') in body.name :
+	if !('miniBullet') in body.name:
 		health -= 40
 		velocity = -velocity*4
 		stun = true
