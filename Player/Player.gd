@@ -30,7 +30,7 @@ func _process(delta) -> void:
 	# Rotation:
 	if joystickRight and joystickRight.is_pressed():
 		rotation = joystickRight.get_output().angle()
-	look_at(get_global_mouse_position())#diganti dengan player.global_position dan Vector2
+	#diganti dengan player.global_position dan Vector2
 	
 	if Input.is_action_pressed("fire") and can_fire:
 		var bullet_instance = bullet.instance()
