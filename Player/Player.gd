@@ -13,7 +13,7 @@ var health_maks = 200
 var health_hero = 200
 signal hero_update_health(value)
 func _process(delta):
-	look_at(get_global_mouse_position())
+	look_at(get_global_mouse_position())#diganti dengan player.global_position dan Vector2
 	
 	if Input.is_action_pressed("fire") and can_fire:
 		var bullet_instance = bullet.instance()
@@ -53,7 +53,9 @@ func _on_Area2D_body_entered(body):
 		health_bar -= 30
 	emit_signal("hero_update_health", (float(health_bar)/float(health_maks)) * 100)
 	if health_bar <= 0:
+		$GUI.queue_free()
 		kill()
+		
 		
 		
 	
@@ -62,3 +64,5 @@ func _on_Area2D_body_entered(body):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+ # Replace with function body.
