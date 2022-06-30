@@ -28,11 +28,10 @@ func _process(delta) -> void:
 	position += move * speed * delta
 	
 	# Rotation:
-	if joystickRight and joystickRight.is_pressed():
-		rotation = joystickRight.get_output().angle()
-	#diganti dengan player.global_position dan Vector2
 	
-	if Input.is_action_pressed("fire") and can_fire:
+	#diganti dengan player.global_position dan Vector2
+	look_at(self.global_position+move)
+	if Input.is_action_just_pressed("fire") and can_fire:
 		var bullet_instance = bullet.instance()
 		bullet_instance.position = $BulletPoint.get_global_position()
 		bullet_instance.rotation_degrees = rotation_degrees

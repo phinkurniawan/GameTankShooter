@@ -3,11 +3,6 @@
 [ext_resource path="res://new_theme.tres" type="Theme" id=1]
 [ext_resource path="res://MainMenu.gd" type="Script" id=2]
 [ext_resource path="res://Sci-Fi-Dramatic-Theme.mp3" type="AudioStream" id=3]
-[ext_resource path="res://jackeyfont.ttf" type="DynamicFontData" id=4]
-
-[sub_resource type="DynamicFont" id=6]
-size = 60
-font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFontData" id=3]
 font_path = "res://ReggaeOne-Regular.ttf"
@@ -26,10 +21,19 @@ font_path = "res://ReggaeOne-Regular.ttf"
 size = 40
 font_data = SubResource( 5 )
 
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 80, 20 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 70, 42 )
+
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 1024.0
@@ -42,8 +46,10 @@ __meta__ = {
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_left = 21.0
+margin_top = -19.0
+margin_right = 1045.0
+margin_bottom = 581.0
 theme = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -51,21 +57,14 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
 margin_left = 162.0
-margin_top = 173.0
+margin_top = 213.0
 margin_right = 862.0
-margin_bottom = 427.0
+margin_bottom = 386.0
 custom_constants/separation = 20
 
-[node name="test" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer"]
-margin_right = 700.0
-margin_bottom = 61.0
-custom_fonts/font = SubResource( 6 )
-text = "test"
-
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/CenterContainer/VBoxContainer"]
-margin_top = 81.0
 margin_right = 700.0
-margin_bottom = 226.0
+margin_bottom = 145.0
 
 [node name="Label" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer/CenterContainer"]
 margin_right = 700.0
@@ -76,9 +75,9 @@ text = "戦車シューター"
 uppercase = true
 
 [node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer/CenterContainer/VBoxContainer"]
-margin_top = 246.0
+margin_top = 165.0
 margin_right = 700.0
-margin_bottom = 254.0
+margin_bottom = 173.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/VBoxContainer/CenterContainer2"]
 margin_left = 350.0
@@ -123,14 +122,15 @@ margin_top = 4.0
 margin_bottom = 4.0
 
 [node name="Options" type="TouchScreenButton" parent="CanvasLayer/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2"]
-position = Vector2( -2, 48 )
+position = Vector2( -72, 34 )
+shape = SubResource( 8 )
 action = "ui_accept"
 
 [node name="Selector" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/Options"]
-margin_left = -89.0
-margin_top = -29.0
-margin_right = -61.0
-margin_bottom = 30.0
+margin_left = -38.0
+margin_top = -15.0
+margin_right = -10.0
+margin_bottom = 44.0
 rect_min_size = Vector2( 7, 0 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
@@ -140,10 +140,10 @@ __meta__ = {
 }
 
 [node name="OptionName" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/Options"]
-margin_left = -57.0
-margin_top = -29.0
-margin_right = 110.0
-margin_bottom = 30.0
+margin_left = -6.0
+margin_top = -15.0
+margin_right = 161.0
+margin_bottom = 44.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Options"
@@ -156,17 +156,18 @@ margin_top = 8.0
 margin_bottom = 8.0
 
 [node name="Exit" type="TouchScreenButton" parent="CanvasLayer/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3"]
-position = Vector2( -48, 69 )
+position = Vector2( -54, 80 )
 scale = Vector2( 0.707304, 0.349685 )
+shape = SubResource( 9 )
 action = "ui_accept"
 
 [node name="Selector" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/Exit"]
-margin_left = -25.4488
-margin_top = -45.7555
-margin_right = 2.55124
-margin_bottom = 13.2445
+margin_left = -41.0007
+margin_top = -88.6511
+margin_right = -13.0007
+margin_bottom = -29.6511
 rect_min_size = Vector2( 7, 0 )
-rect_scale = Vector2( 1.29098, 3.20074 )
+rect_scale = Vector2( 1.40855, 3.51315 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = ">"
@@ -175,12 +176,12 @@ __meta__ = {
 }
 
 [node name="OptionName" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/Exit"]
-margin_left = 12.7244
-margin_top = 5.71936
-margin_right = 114.724
-margin_bottom = 65.7194
+margin_left = 1.41379
+margin_top = -37.1764
+margin_right = 103.413
+margin_bottom = 22.8236
 rect_min_size = Vector2( 49, 0 )
-rect_scale = Vector2( 1.34788, 1.95405 )
+rect_scale = Vector2( 1.6872, 2.4116 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Exit"

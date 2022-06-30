@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://new_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Sci-Fi-Dramatic-Theme.mp3" type="AudioStream" id=3]
@@ -6,19 +6,39 @@
 [sub_resource type="GDScript" id=5]
 script/source = "extends MarginContainer
 
-const first_scene = preload(\"res://Scenes/Main.tscn\")
 
+onready var selector_one = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/PlayAgain/Selector
+onready var selector_two = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/Exit/Selector
 
+var current_selection = 0
 
-func _on_PlayAgain_mouse_entered():
-	get_tree().change_scene(\"res://Scenes/Main.tscn\")
-	get_tree().reload_current_scene()
-	pass # Replace with function body.
+func _ready():
+	set_current_selection(0)
 
+func _process(delta):
+	if Input.is_action_just_pressed(\"ui_down\") and current_selection < 1:
+		current_selection += 1
+		set_current_selection(current_selection)
+	elif Input.is_action_just_pressed(\"ui_up\") and current_selection > 0:
+		current_selection -= 1
+		set_current_selection(current_selection)
+	elif Input.is_action_just_pressed(\"ui_accept\"):
+		handle_selection(current_selection)
 
-func _on_Exit_mouse_entered():
-	get_tree().quit()
-	pass # Replace with function body.
+func handle_selection(_current_selection):
+	if _current_selection == 0:
+		get_tree().change_scene(\"res://Scenes/Main.tscn\")
+	elif _current_selection == 1:
+		get_tree().quit()
+		
+
+func set_current_selection(_current_selection):
+	selector_one.text = \"\"
+	selector_two.text = \"\"
+	if _current_selection == 0:
+		selector_one.text = \">\"
+	elif _current_selection == 1:
+		selector_two.text = \">\"
 "
 
 [sub_resource type="DynamicFontData" id=3]
@@ -28,6 +48,9 @@ font_path = "res://ReggaeOne-Regular.ttf"
 size = 100
 font_data = SubResource( 3 )
 
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 120, 25 )
+
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://ReggaeOne-Regular.ttf"
 
@@ -35,7 +58,11 @@ font_path = "res://ReggaeOne-Regular.ttf"
 size = 40
 font_data = SubResource( 1 )
 
-[node name="MainMenu" type="MarginContainer"]
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 45, 25 )
+
+[node name="GameOver" type="MarginContainer"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = SubResource( 5 )
@@ -55,9 +82,9 @@ theme = ExtResource( 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 187.0
-margin_top = 156.0
+margin_top = 215.0
 margin_right = 837.0
-margin_bottom = 443.0
+margin_bottom = 384.0
 custom_constants/separation = 20
 
 [node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
@@ -75,68 +102,80 @@ uppercase = true
 [node name="CenterContainer2" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
 margin_top = 165.0
 margin_right = 650.0
-margin_bottom = 287.0
+margin_bottom = 169.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2"]
-margin_left = 197.0
-margin_right = 452.0
-margin_bottom = 122.0
+margin_left = 325.0
+margin_right = 325.0
+margin_bottom = 4.0
 
 [node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
-margin_right = 255.0
-margin_bottom = 59.0
 
-[node name="PlayAgain" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer"]
-margin_right = 255.0
-margin_bottom = 59.0
+[node name="PlayAgain" type="TouchScreenButton" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer"]
+position = Vector2( -87, 14 )
+shape = SubResource( 6 )
+action = "ui_accept"
 
 [node name="Selector" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/PlayAgain"]
-margin_right = 28.0
-margin_bottom = 59.0
+margin_left = -28.0
+margin_top = -9.0
+margin_bottom = 50.0
 rect_min_size = Vector2( 7, 0 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="OptionName" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/PlayAgain"]
-margin_left = 32.0
-margin_right = 255.0
-margin_bottom = 59.0
+margin_left = 8.0
+margin_top = -9.0
+margin_right = 231.0
+margin_bottom = 50.0
 rect_min_size = Vector2( 49, 0 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Play Again"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CenterContainer3" type="CenterContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
-margin_top = 63.0
-margin_right = 255.0
-margin_bottom = 122.0
+margin_top = 4.0
+margin_bottom = 4.0
 
-[node name="Exit" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3"]
-margin_left = 71.0
-margin_right = 183.0
-margin_bottom = 59.0
+[node name="Exit" type="TouchScreenButton" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3"]
+position = Vector2( -33, 85 )
+shape = SubResource( 7 )
+action = "ui_accept"
 
 [node name="Selector" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/Exit"]
-margin_right = 28.0
-margin_bottom = 59.0
+margin_left = -34.0
+margin_top = -11.0
+margin_right = -6.0
+margin_bottom = 48.0
 rect_min_size = Vector2( 7, 0 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="OptionName" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/Exit"]
-margin_left = 32.0
-margin_right = 112.0
-margin_bottom = 59.0
+margin_left = 2.0
+margin_top = -8.0
+margin_right = 82.0
+margin_bottom = 51.0
 rect_min_size = Vector2( 49, 0 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CenterContainer"]
 stream = ExtResource( 3 )
 autoplay = true
-
-[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/PlayAgain" to="." method="_on_PlayAgain_mouse_entered"]
-[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/Exit" to="." method="_on_Exit_mouse_entered"]
