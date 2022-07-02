@@ -6,15 +6,13 @@ onready var health_progress = $Player/GUI/HealthBar
 
 var enemy = preload("res://Enemy.tscn")
 var boss = preload("res://Boss.tscn")
-var player = preload("res://Player/Player.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
 	pass # Replace with function body.
 
-func reload_level():
-	get_tree().reload_current_scene()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
