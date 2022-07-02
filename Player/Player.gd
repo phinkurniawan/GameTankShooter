@@ -10,7 +10,7 @@ onready var joystickRight : VirtualJoystick = get_node(joystickRightPath)
 
 export var speed = 100
 export var bullet_speed = 1000
-export var fire_rate = 0.2
+export var fire_rate = 0.1
 var health_bar= 200
 var bullet = preload("res://Player/Bullet.tscn")
 #var sound = preload("res://laserShot.mp3")

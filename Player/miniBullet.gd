@@ -15,10 +15,9 @@ func _ready():
 #	pass
 
 func _on_miniBullet_body_entered(body):
-	if !body.is_in_group('enemy') :
+	if body is KinematicBody2D or !body.is_in_group('enemy'):
 		var explosion_instance = explosion.instance()
 		explosion_instance.position = get_global_position()
 		get_tree().get_root().add_child(explosion_instance)
 		queue_free()
-
 	pass # Replace with function body.

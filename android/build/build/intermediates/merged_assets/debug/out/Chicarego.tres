@@ -1,9 +1,0 @@
-[gd_resource type="DynamicFont" load_steps=2 format=2]
-
-[sub_resource type="DynamicFontData" id=1]
-font_path = "res://ReggaeOne-Regular.ttf"
-
-[resource]
-size = 100
-outline_color = Color( 0.498039, 0.0784314, 0.0784314, 1 )
-font_data = SubResource( 1 )

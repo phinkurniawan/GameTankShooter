@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://new_theme.tres" type="Theme" id=5]
+[ext_resource path="res://shoot-removebg-preview.png" type="Texture" id=6]
+[ext_resource path="res://joystick/virtual_joystick.tscn" type="PackedScene" id=10]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 159.0
+
+[node name="GUI" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="fire" type="TouchScreenButton" parent="Control"]
+position = Vector2( 695, 408 )
+scale = Vector2( 0.480974, 0.478947 )
+normal = ExtResource( 6 )
+pressed = ExtResource( 6 )
+shape = SubResource( 1 )
+action = "fire"
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+margin_left = 23.0
+margin_top = 12.0
+margin_right = 139.0
+margin_bottom = 29.0
+theme = ExtResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+value = 50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Virtual joystick" parent="." instance=ExtResource( 10 )]
+margin_left = 21.0
+margin_top = -217.0
+margin_right = 221.0
+margin_bottom = -17.0
+action_left = "move_left"
+action_right = "move_right"
+action_up = "move_up"
+action_down = "move_down"

@@ -1,4 +1,0 @@
-#Thu Jun 30 22:52:47 ICT 2022
-base.0=C\:\\xampp\\htdocs\\GameTankShooter\\android\\build\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
-renamed.0=classes.dex
-path.0=classes.dex
