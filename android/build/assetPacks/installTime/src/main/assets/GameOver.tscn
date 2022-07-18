@@ -24,7 +24,8 @@ func _process(delta):
 		set_current_selection(current_selection)
 	elif Input.is_action_just_pressed(\"ui_accept\"):
 		handle_selection(current_selection)
-
+	elif Input.is_action_just_pressed(\"ui_cancel\"):
+		get_tree().quit()
 func handle_selection(_current_selection):
 	if _current_selection == 0:
 		get_tree().change_scene(\"res://Scenes/Main.tscn\")
@@ -148,7 +149,7 @@ margin_bottom = 4.0
 [node name="Exit" type="TouchScreenButton" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3"]
 position = Vector2( -33, 85 )
 shape = SubResource( 7 )
-action = "ui_accept"
+action = "ui_cancel"
 
 [node name="Selector" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/Exit"]
 margin_left = -34.0

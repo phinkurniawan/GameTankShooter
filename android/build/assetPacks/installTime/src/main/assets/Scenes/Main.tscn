@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Tilemaps/terrainTiles_default.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Scenes/World.gd" type="Script" id=6]
 [ext_resource path="res://SpawnLocation.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Player/Player.gd" type="Script" id=8]
+[ext_resource path="res://Sprites/box.png" type="Texture" id=9]
 
 [sub_resource type="TileSet" id=1]
 0/name = "terrainTiles_default.png 0"
@@ -571,6 +572,12 @@
 39/shapes = [  ]
 39/z_index = 0
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 14, 319.25 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 17.25, 211.775 )
+
 [node name="World" type="Node2D"]
 script = ExtResource( 6 )
 
@@ -584,53 +591,111 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 15, 0, 2, 16, 0, 3, 0, 0, 4, 1, 0, 5, 0, 0
 position = Vector2( 501, 350 )
 script = ExtResource( 8 )
 
-[node name="Tree" parent="." instance=ExtResource( 4 )]
+[node name="colliders" type="Node2D" parent="."]
+
+[node name="Tree" parent="colliders" instance=ExtResource( 4 )]
 position = Vector2( 296, 69 )
 
-[node name="Tree2" parent="." instance=ExtResource( 4 )]
+[node name="Tree2" parent="colliders" instance=ExtResource( 4 )]
 position = Vector2( 918, 36 )
 
-[node name="Tree3" parent="." instance=ExtResource( 4 )]
+[node name="Tree3" parent="colliders" instance=ExtResource( 4 )]
 position = Vector2( -27, 503 )
 
-[node name="Tree4" parent="." instance=ExtResource( 4 )]
+[node name="Tree4" parent="colliders" instance=ExtResource( 4 )]
 position = Vector2( 368, 257 )
 
-[node name="Tree5" parent="." instance=ExtResource( 4 )]
+[node name="Tree5" parent="colliders" instance=ExtResource( 4 )]
 position = Vector2( 927, 469 )
 
-[node name="Tree6" parent="." instance=ExtResource( 4 )]
+[node name="Tree6" parent="colliders" instance=ExtResource( 4 )]
 position = Vector2( 158, 405 )
 
-[node name="Tree7" parent="." instance=ExtResource( 4 )]
+[node name="Tree7" parent="colliders" instance=ExtResource( 4 )]
 position = Vector2( 296, 69 )
 
-[node name="Tree8" parent="." instance=ExtResource( 4 )]
+[node name="Tree8" parent="colliders" instance=ExtResource( 4 )]
 position = Vector2( 542, 39 )
 
-[node name="Tree9" parent="." instance=ExtResource( 4 )]
+[node name="Tree9" parent="colliders" instance=ExtResource( 4 )]
 position = Vector2( 604, 39 )
 
-[node name="Tree10" parent="." instance=ExtResource( 4 )]
+[node name="Tree10" parent="colliders" instance=ExtResource( 4 )]
 position = Vector2( 441, 473 )
 
-[node name="Tree11" parent="." instance=ExtResource( 4 )]
+[node name="Tree11" parent="colliders" instance=ExtResource( 4 )]
 position = Vector2( 566, 471 )
 
-[node name="Tree12" parent="." instance=ExtResource( 4 )]
+[node name="Tree12" parent="colliders" instance=ExtResource( 4 )]
 position = Vector2( 667, 237 )
 
-[node name="Tree13" parent="." instance=ExtResource( 4 )]
+[node name="Tree13" parent="colliders" instance=ExtResource( 4 )]
 position = Vector2( 504, 472 )
 
-[node name="Tree14" parent="." instance=ExtResource( 4 )]
+[node name="Tree14" parent="colliders" instance=ExtResource( 4 )]
 position = Vector2( -10, 85 )
 
-[node name="Tree15" parent="." instance=ExtResource( 4 )]
-position = Vector2( 922, 234 )
+[node name="Wall" type="Node2D" parent="."]
+position = Vector2( -10, 85 )
+
+[node name="Tree16" type="StaticBody2D" parent="Wall"]
+position = Vector2( -68, 148 )
+
+[node name="Sprite" type="Sprite" parent="Wall/Tree16"]
+visible = false
+position = Vector2( -8.50003, 89.5 )
+scale = Vector2( 0.181159, 5.41525 )
+texture = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/Tree16"]
+position = Vector2( -7, 90.75 )
+shape = SubResource( 2 )
+
+[node name="Tree15" type="StaticBody2D" parent="Wall"]
+position = Vector2( 1108, 146 )
+
+[node name="Sprite" type="Sprite" parent="Wall/Tree15"]
+visible = false
+position = Vector2( -8.50003, 89.5 )
+scale = Vector2( 0.181159, 5.41525 )
+texture = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/Tree15"]
+position = Vector2( -7, 90.75 )
+shape = SubResource( 2 )
+
+[node name="Tree18" type="StaticBody2D" parent="Wall"]
+position = Vector2( 324, 577 )
+rotation = 1.5708
+
+[node name="Sprite" type="Sprite" parent="Wall/Tree18"]
+visible = false
+position = Vector2( -8.50003, -185.207 )
+scale = Vector2( 0.181159, 9.83921 )
+texture = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/Tree18"]
+position = Vector2( -8.5, -185.5 )
+scale = Vector2( 1, 2.76 )
+shape = SubResource( 3 )
+
+[node name="Tree19" type="StaticBody2D" parent="Wall"]
+position = Vector2( 326, -88 )
+rotation = 1.5708
+
+[node name="Sprite" type="Sprite" parent="Wall/Tree19"]
+visible = false
+position = Vector2( -8.50003, -185.207 )
+scale = Vector2( 0.181159, 9.83921 )
+texture = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/Tree19"]
+position = Vector2( -11.75, -182.5 )
+scale = Vector2( 1, 2.76 )
+shape = SubResource( 3 )
 
 [node name="Boss" parent="." instance=ExtResource( 3 )]
-position = Vector2( -15, 290 )
+position = Vector2( 219, 612 )
 
 [node name="Enemy" parent="." instance=ExtResource( 5 )]
 position = Vector2( -16, 6 )
@@ -652,7 +717,7 @@ position = Vector2( 211, 612 )
 position = Vector2( 851, 611 )
 
 [node name="SpawnLocation" parent="." instance=ExtResource( 7 )]
-position = Vector2( 531, -2 )
+position = Vector2( 460, 23 )
 
 [node name="BossSpawn" type="Timer" parent="."]
 wait_time = 10.0

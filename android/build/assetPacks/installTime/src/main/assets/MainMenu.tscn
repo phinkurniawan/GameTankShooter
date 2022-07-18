@@ -124,7 +124,7 @@ margin_bottom = 4.0
 [node name="Options" type="TouchScreenButton" parent="CanvasLayer/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2"]
 position = Vector2( -72, 34 )
 shape = SubResource( 8 )
-action = "ui_accept"
+action = "ui_focus_next"
 
 [node name="Selector" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/Options"]
 margin_left = -38.0
@@ -159,7 +159,7 @@ margin_bottom = 8.0
 position = Vector2( -54, 80 )
 scale = Vector2( 0.707304, 0.349685 )
 shape = SubResource( 9 )
-action = "ui_accept"
+action = "ui_cancel"
 
 [node name="Selector" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/Exit"]
 margin_left = -41.0007
